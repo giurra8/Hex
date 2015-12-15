@@ -1,0 +1,14 @@
+yay, pocinjemo ;D
+
+sastav (naravno usput ce se menjati i ko zna sta ce na kraju ispasti xD):
+
+- Frame
+- Menu
+- Board <- Field(14)
+- Token <- Slot(3)[1-10]
+- Player(a) <- AI
+            <- Person
+- Bonus
+- Difficulty(e) <- easy
+                <- medium
+                <-hard
