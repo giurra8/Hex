@@ -1,2 +1,2 @@
 # Hex
-A multiplayer board-based puzzle game
+A board-based puzzle game
