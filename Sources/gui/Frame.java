@@ -1,27 +1,30 @@
 package Sources.gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by djura on 16-Dec-15.
  */
 public class Frame extends JFrame {
 
-    private ImageIcon icon = null;
+    private BufferedImage icon = null;
 
     public Frame(){
 
         try{
-            icon = new ImageIcon(getClass().getResource("resources/hexagon-icon.png"));
+            icon = ImageIO.read(getClass().getResource("/hexagon-icon.png"));
         } catch(Exception e){
             e.printStackTrace();
         }
 
         setTitle("Hex");
-        //setIconImage(icon);
+        setIconImage(icon);
         setSize(800, 600);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
     }
 
 }
