@@ -60,7 +60,7 @@ public class Frame extends JFrame {
 		setLocationRelativeTo(null);
 
 		play1.setClr(Color.DARK_GRAY);
-		play2.setClr(Color.ORANGE);
+		play2.setClr(Color.PINK);
 
 		add(board, BorderLayout.CENTER);
 		add(pan1, BorderLayout.WEST);
@@ -131,6 +131,10 @@ public class Frame extends JFrame {
 				return c;
 		}
 		return null;
-		
+
+	}
+
+	public Map<Cell, ArrayList<Cell>> getNeighborCells() {
+		return neighborCells;
 	}
 }
