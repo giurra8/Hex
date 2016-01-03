@@ -3,7 +3,7 @@ package Sources.core;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class Frame extends JFrame {
 	
@@ -53,17 +53,20 @@ public class Frame extends JFrame {
 		setIconImage(icon);
 		setSize(1300,800);
 		//setLocation(450, 100);
-		setVisible(true);
-
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		setLocationRelativeTo(null);
-		add(board, BorderLayout.CENTER);
+
 		play1.setClr(Color.DARK_GRAY);
 		play2.setClr(Color.ORANGE);
 
+		add(board, BorderLayout.CENTER);
 		add(pan1, BorderLayout.WEST);
 		add(pan2, BorderLayout.EAST);
+
+
+		setVisible(true);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
 	}
 
 

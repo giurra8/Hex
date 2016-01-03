@@ -13,10 +13,10 @@ public class Token {
 	private Shape shape=new GeneralPath();
 	private double x;
 	private double y;
-	private final double LINE=50;
+	private final double LINE = 50;
 	private ArrayList<TokenCell> tcells=new ArrayList<>();
 	private Player owner;
-
+	private boolean selected;
 
 	public Token(double x, double y){
 		this.x=x;
@@ -72,7 +72,27 @@ public void drawToken(Graphics2D g){
 		}
 	}
 
-public double getX() {
+	public Shape getShape() {
+		return shape;
+	}
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
+
+	public Player getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Player owner) {
+		this.owner = owner;
+	}
+
+	public double getX() {
 	return x;
 }
 
