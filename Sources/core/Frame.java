@@ -69,7 +69,7 @@ public class Frame extends JFrame {
 		add(pan2, BorderLayout.EAST);
 		fillNeighbors();
 
-		
+
 		setVisible(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,7 +94,7 @@ public class Frame extends JFrame {
 	{
 		if(currentPlaya==play1)
 		{
-			pan1.setBackground(Color.lightGray);
+			pan1.setBackground(UIManager.getColor ( "Panel.background" ));
 			pan2.setBackground(play2.getClr());
 			pan1.repaint();
 			pan2.repaint();
@@ -103,7 +103,7 @@ public class Frame extends JFrame {
 		else
 		{
 			pan1.setBackground(play1.getClr());
-			pan2.setBackground(Color.lightGray);
+			pan2.setBackground(UIManager.getColor ( "Panel.background" ));
 			pan1.repaint();
 			pan2.repaint();
 			currentPlaya=play1;
