@@ -102,12 +102,13 @@ public class Frame extends JFrame {
 		}
 		else
 		{
+			
 			pan1.setBackground(play1.getClr());
 			pan2.setBackground(UIManager.getColor ( "Panel.background" ));
 			pan1.repaint();
 			pan2.repaint();
 			currentPlaya=play1;
-			
+
 		}
 	}
 
