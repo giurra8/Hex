@@ -14,11 +14,10 @@ public class Token {
 	private double x;
 	private double y;
 	private final double LINE = 50;
-	private ArrayList<TokenCell> tcells=new ArrayList<>();
+	private ArrayList<TokenField> tcells=new ArrayList<>();
 	private Player owner;
 	private boolean selected;
 	private int[] niz;
-	//= new int[3];
 
 	public Token(double x, double y){
 		this.x=x;
@@ -40,13 +39,14 @@ public class Token {
 			niz = randomize();
 
 		for(int i=1;i<4;i++){
-			TokenCell tc = new TokenCell(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1]);
-			tc.makeTokenCell();
+			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1]);
+			tc.makeTokenField();
 			tcells.add(tc);
 		}
 
 	}
 	public void remakeToken(){
+		shape = new GeneralPath();
 		((GeneralPath)shape).moveTo(x, y);
 		((GeneralPath)shape).lineTo(x-LINE/2, y-(LINE/2*Math.sqrt(3)));
 		((GeneralPath)shape).lineTo(x, y-LINE*Math.sqrt(3));
@@ -54,10 +54,10 @@ public class Token {
 		((GeneralPath)shape).lineTo(x+1.5*LINE, y-LINE/2*Math.sqrt(3));
 		((GeneralPath)shape).lineTo(x+LINE, y);
 		((GeneralPath)shape).closePath();
-
+		tcells.clear();
 		for(int i=1;i<4;i++){
-			TokenCell tc = new TokenCell(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1]);
-			tc.makeTokenCell();
+			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1]);
+			tc.makeTokenField();
 			tcells.add(tc);
 		}
 
@@ -84,8 +84,8 @@ public void drawToken(Graphics2D g){
 		g.setStroke(new BasicStroke(2f));
 		g.setPaint(Color.black);
 		g.draw(shape);
-		for(TokenCell tc: tcells){
-			tc.drawTokenCell(g);
+		for(TokenField tc: tcells){
+			tc.drawTokenField(g);
 		}
 	}
 
@@ -129,11 +129,11 @@ public void setY(double y) {
 	this.y = y;
 }
 
-public ArrayList<TokenCell> getTcells() {
+public ArrayList<TokenField> getTcells() {
 	return tcells;
 }
 
-public void setTcells(ArrayList<TokenCell> tcells) {
+public void setTcells(ArrayList<TokenField> tcells) {
 	this.tcells = tcells;
 }
 
