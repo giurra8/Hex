@@ -9,12 +9,12 @@ import java.awt.geom.GeneralPath;
 
 public class TokenCell {
 
-	Shape shape = new GeneralPath();
-	double x;
-	double y;
-	final double LINE = 50;
-	int i;
-	int value;
+	private Shape shape = new GeneralPath();
+	private double x;
+	private double y;
+	private final double LINE = 50;
+	private int i;
+	private int value;
 
 	public TokenCell(double x, double y, int i, int a) {
 		this.x = x;

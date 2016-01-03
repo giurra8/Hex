@@ -8,12 +8,12 @@ import java.awt.geom.GeneralPath;
 
 public class Cell {
 	
-	Shape shape=new GeneralPath();
-	double x;
-	double y;
-	final double  LINE=50;
-	Token tok=null;
-	boolean hasToken=false;
+	private Shape shape=new GeneralPath();
+	private double x;
+	private double y;
+	private final double  LINE=50;
+	private Token tok=null;
+	private boolean hasToken=false;
 	
 	public Cell(double x, double y){
 		this.x=x;
