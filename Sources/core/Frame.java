@@ -69,6 +69,7 @@ public class Frame extends JFrame {
 		add(pan2, BorderLayout.EAST);
 		fillNeighbors();
 
+		
 		setVisible(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
