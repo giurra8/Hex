@@ -31,13 +31,16 @@ public class BoardListener implements MouseListener {
 				for(Cell c: cells){
 					if(c.getShape().contains(pos)){
 						if(c.getTok()==null){
+                            p.getTokens().remove(t);
                             t.setX(c.getX());
                             t.setY(c.getY());
+                            t.remakeToken();
                             c.setTok(t);
-							Frame.getInstance().repaint();
+
 						}
 					}
 				}
+        Frame.getInstance().repaint();
 
     }
 
