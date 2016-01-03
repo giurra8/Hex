@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 
-public class TokenCell {
+public class TokenField {
 
 	private Shape shape = new GeneralPath();
 	private double x;
@@ -16,14 +16,14 @@ public class TokenCell {
 	private int i;
 	private int value;
 
-	public TokenCell(double x, double y, int i, int a) {
+	public TokenField(double x, double y, int i, int a) {
 		this.x = x;
 		this.i = i;
 		this.y = y;
 		this.value=a;
 	}
 
-	public void makeTokenCell() {
+	public void makeTokenField() {
 
 		switch (i) {
 		case 1: {
@@ -51,7 +51,7 @@ public class TokenCell {
 
 	}
 
-	public void drawTokenCell(Graphics2D g) {
+	public void drawTokenField(Graphics2D g) {
 
 		g.setStroke(new BasicStroke(2f));
 		g.setPaint(Color.black);
@@ -64,7 +64,7 @@ public class TokenCell {
 			}
 		if(i==2){ 
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
-			g.drawString(""+value, (int) ((int) x+LINE/2-8),(int) (y+LINE/2+13));	
+			g.drawString(""+value, (int) ((int) x+LINE/2-8),(int) (y+LINE/2+13));
 			}
 		if(i==3){
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 

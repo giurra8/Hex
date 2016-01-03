@@ -14,10 +14,11 @@ public class Cell {
 	private final double  LINE = 50;
 	private Token tok = null;
 	private boolean hasToken = false;
-	
-	public Cell(double x, double y){
+	private int id;
+	public Cell(double x, double y, int id){
 		this.x=x;
-		this.y=y;		
+		this.y=y;
+		this.id=id;
 	}
 
 	public void makeCell(){
