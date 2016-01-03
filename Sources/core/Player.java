@@ -56,5 +56,7 @@ public class Player {
 		this.tokens = tokens;
 	}
 
-		
+	public Color getClr() {
+		return clr;
+	}
 }

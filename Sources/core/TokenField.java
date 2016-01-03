@@ -13,14 +13,16 @@ public class TokenField {
 	private double x;
 	private double y;
 	private final double LINE = 50;
+	private Token parent;
 	private int i;
 	private int value;
 
-	public TokenField(double x, double y, int i, int a) {
+	public TokenField(double x, double y, int i, int a, Token parent) {
 		this.x = x;
 		this.i = i;
 		this.y = y;
 		this.value=a;
+		this.parent = parent;
 	}
 
 	public void makeTokenField() {
@@ -54,10 +56,12 @@ public class TokenField {
 	public void drawTokenField(Graphics2D g) {
 
 		g.setStroke(new BasicStroke(2f));
-		g.setPaint(Color.black);
+		g.setPaint(parent.getOwner().getClr());
+		g.fill(shape);
+		g.setPaint(Color.white);
 		g.draw(shape);
 		
-		
+		g.setPaint(Color.white);
 		if(i==1) {
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 24)); 
 			g.drawString(""+value,(int) ((int) x-LINE/2-14),(int) y+4);
@@ -73,4 +77,7 @@ public class TokenField {
 		}
 	}
 
+	public int getId() {
+		return i;
+	}
 }

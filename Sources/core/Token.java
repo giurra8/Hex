@@ -18,6 +18,7 @@ public class Token {
 	private Player owner;
 	private boolean selected;
 	private int[] niz;
+	private Cell ownerCell;
 
 	public Token(double x, double y){
 		this.x=x;
@@ -39,7 +40,7 @@ public class Token {
 			niz = randomize();
 
 		for(int i=1;i<4;i++){
-			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1]);
+			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1], this);
 			tc.makeTokenField();
 			tcells.add(tc);
 		}
@@ -56,7 +57,7 @@ public class Token {
 		((GeneralPath)shape).closePath();
 		tcells.clear();
 		for(int i=1;i<4;i++){
-			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1]);
+			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1],this);
 			tc.makeTokenField();
 			tcells.add(tc);
 		}
@@ -81,12 +82,20 @@ public class Token {
 
 public void drawToken(Graphics2D g){
 		
-		g.setStroke(new BasicStroke(2f));
+		g.setStroke(new BasicStroke(4f));
 		g.setPaint(Color.black);
 		g.draw(shape);
 		for(TokenField tc: tcells){
 			tc.drawTokenField(g);
 		}
+	}
+
+	public Cell getOwnerCell() {
+		return ownerCell;
+	}
+
+	public void setOwnerCell(Cell ownerCell) {
+		this.ownerCell = ownerCell;
 	}
 
 	public int[] getNiz() {
