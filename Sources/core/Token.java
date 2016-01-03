@@ -70,7 +70,7 @@ public class Token {
 		niz = new int[3];
 		for(int i=0;i<3;i++){
 			Random r = new Random();
-			int b=r.nextInt(9)+1;
+			int b=r.nextInt(10)+1;
 			niz[i] = b;
 			zbir+=b;
 		}
