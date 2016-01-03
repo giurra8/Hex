@@ -64,15 +64,15 @@ public class TokenField {
 		g.setPaint(Color.white);
 		if(i==1) {
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 24)); 
-			g.drawString(""+value,(int) ((int) x-LINE/2-14),(int) y+4);
+			g.drawString(""+value,(int) ((int) x-LINE/2-14),(int) y+8);
 			}
 		if(i==2){ 
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
-			g.drawString(""+value, (int) ((int) x+LINE/2-8),(int) (y+LINE/2+13));
+			g.drawString(""+value, (int) ((int) x+LINE/2-18),(int) (y+LINE/2+8));
 			}
 		if(i==3){
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
-			g.drawString(""+value, (int)(x+LINE/2)-9,(int)(y-LINE/2));
+			g.drawString(""+value, (int) ((int) x+LINE/2-18),(int)(y-LINE/2+8));
 			
 		}
 	}
