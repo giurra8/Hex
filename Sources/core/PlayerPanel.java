@@ -13,10 +13,9 @@ public class PlayerPanel extends JPanel {
     private Player p;
 
     public PlayerPanel(Player p){
-
         this.p = p;
         setPreferredSize(new Dimension(300, 800));
-        setBackground(Color.blue);
+
         setVisible(true);
         addMouseListener(new PlayerPanelListener());
 
@@ -33,7 +32,7 @@ public class PlayerPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponents(g);
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         for (Token tok : p.getTokens()) {
 
