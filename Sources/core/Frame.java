@@ -11,10 +11,10 @@ import javax.swing.*;
 public class Frame extends JFrame {
 	
 	private Board board=new Board();
-	private Player1 play1=new Player1();	
-	private Player2 play2=new Player2();
-	private PlayerPanel pan1 = new PlayerPanel(play1);
-	private PlayerPanel pan2 = new PlayerPanel(play2);
+	private Player play1=new Player();
+	private Player play2=new Player();
+	private PlayerPanel pan1;
+	private PlayerPanel pan2;
 	private Map<Cell,ArrayList<Cell>> neighborCells = new HashMap<>();
 	private static Frame instance;
 	private Player currentPlaya=play1;
@@ -61,7 +61,9 @@ public class Frame extends JFrame {
 
 		play1.setClr(Color.DARK_GRAY);
 		play2.setClr(Color.PINK);
-
+		pan1 = new PlayerPanel(play1);
+		pan2 = new PlayerPanel(play2);
+		pan1.setBackground(play1.getClr());
 		add(board, BorderLayout.CENTER);
 		add(pan1, BorderLayout.WEST);
 		add(pan2, BorderLayout.EAST);
@@ -78,19 +80,33 @@ public class Frame extends JFrame {
 	}
 
 
-	public Player1 getPlay1() {
+	public Player getPlay1() {
 		return play1;
 	}
 
 
-	public Player2 getPlay2() {
+	public Player getPlay2() {
 		return play2;
 	}
 	
 	public void switchPlaya()
 	{
-		if(currentPlaya==play1) currentPlaya=play2;
-		else currentPlaya=play1;
+		if(currentPlaya==play1)
+		{
+			pan1.setBackground(Color.lightGray);
+			pan2.setBackground(play2.getClr());
+			pan1.repaint();
+			pan2.repaint();
+			currentPlaya=play2;
+		}
+		else
+		{
+			pan1.setBackground(play1.getClr());
+			pan2.setBackground(Color.lightGray);
+			pan1.repaint();
+			pan2.repaint();
+			currentPlaya=play1;
+		}
 	}
 
 	public void fillNeighbors()
