@@ -107,6 +107,7 @@ public class Frame extends JFrame {
 			pan1.repaint();
 			pan2.repaint();
 			currentPlaya=play1;
+			
 		}
 	}
 
