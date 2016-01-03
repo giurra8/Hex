@@ -84,5 +84,9 @@ public class Frame extends JFrame {
 		return play2;
 	}
 	
-	
+	public void switchPlaya()
+	{
+		if(currentPlaya==play1) currentPlaya=play2;
+		else currentPlaya=play1;
+	}
 }
