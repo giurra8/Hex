@@ -5,6 +5,6 @@ package Sources.core;
  */
 public enum Difficulty {
 
-    EASY, MEDIUM, HARD
+    EASY, MEDIUM, HARD;
 
 }

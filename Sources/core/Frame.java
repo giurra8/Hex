@@ -1,6 +1,6 @@
 package Sources.core;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -10,6 +10,9 @@ public class Frame extends JFrame {
 	private Board board=new Board();
 	private Player1 play1=new Player1();	
 	private Player2 play2=new Player2();
+	private PlayerPanel pan1 = new PlayerPanel(play1);
+	private PlayerPanel pan2 = new PlayerPanel(play2);
+
 	private static Frame instance;
 	private Player currentPlaya=play1;
 	private BufferedImage icon = null;
@@ -48,16 +51,19 @@ public class Frame extends JFrame {
 
 		setTitle("Hex");
 		setIconImage(icon);
-
+		setSize(1300,800);
 		//setLocation(450, 100);
 		setVisible(true);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(1300,800);
+
 		setLocationRelativeTo(null);
 		add(board, BorderLayout.CENTER);
-		add(play1, BorderLayout.WEST);
-		add(play2, BorderLayout.EAST);
+		play1.setClr(Color.DARK_GRAY);
+		play2.setClr(Color.ORANGE);
+
+		add(pan1, BorderLayout.WEST);
+		add(pan2, BorderLayout.EAST);
 	}
 
 

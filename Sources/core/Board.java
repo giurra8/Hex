@@ -27,7 +27,7 @@ public class Board extends JPanel{
 	Cell cell12=new Cell(width-75,250+5*50*Math.sqrt(3)/2);
 	Cell cell13=new Cell(width-150,250+50*Math.sqrt(3));
 	Cell cell14=new Cell(width-150,250+2*50*Math.sqrt(3));
-	Token tok=new Token(width,150);
+	//Token tok=new Token(width,150);
 	
 	
 	
