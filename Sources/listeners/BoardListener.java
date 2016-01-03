@@ -28,16 +28,21 @@ public class BoardListener implements MouseListener {
         Token t = p.getSelected();
         Point pos = e.getPoint();
         ArrayList<Cell> cells = Frame.getInstance().getBoard().getCells();
-				for(Cell c: cells){
-					if(c.getShape().contains(pos)){
-						if(c.getTok()==null){
-                            t.setX(c.getX());
-                            t.setY(c.getY());
-                            c.setTok(t);
-							Frame.getInstance().repaint();
-						}
-					}
-				}
+        for(Cell c: cells){
+            if(c.getShape().contains(pos)){
+                if(c.getTok()==null){
+                    p.getTokens().remove(t);
+                    t.setX(c.getX());
+                    t.setY(c.getY());
+                    t.remakeToken();
+                    c.setTok(t);
+
+                }
+            }
+        }
+        Frame.getInstance().repaint();
+        //ovo treba odkomentarisati
+        //Frame.getInstance().switchPlaya();
 
     }
 

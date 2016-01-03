@@ -17,6 +17,8 @@ public class Token {
 	private ArrayList<TokenCell> tcells=new ArrayList<>();
 	private Player owner;
 	private boolean selected;
+	private int[] niz;
+	//= new int[3];
 
 	public Token(double x, double y){
 		this.x=x;
@@ -32,10 +34,26 @@ public class Token {
 		((GeneralPath)shape).lineTo(x+LINE, y);
 		((GeneralPath)shape).closePath();
 
-		int[] niz = randomize();
+		niz = randomize();
 
 		while(niz==null)
 			niz = randomize();
+
+		for(int i=1;i<4;i++){
+			TokenCell tc = new TokenCell(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1]);
+			tc.makeTokenCell();
+			tcells.add(tc);
+		}
+
+	}
+	public void remakeToken(){
+		((GeneralPath)shape).moveTo(x, y);
+		((GeneralPath)shape).lineTo(x-LINE/2, y-(LINE/2*Math.sqrt(3)));
+		((GeneralPath)shape).lineTo(x, y-LINE*Math.sqrt(3));
+		((GeneralPath)shape).lineTo(x+LINE, y-LINE*Math.sqrt(3));
+		((GeneralPath)shape).lineTo(x+1.5*LINE, y-LINE/2*Math.sqrt(3));
+		((GeneralPath)shape).lineTo(x+LINE, y);
+		((GeneralPath)shape).closePath();
 
 		for(int i=1;i<4;i++){
 			TokenCell tc = new TokenCell(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1]);
@@ -48,8 +66,7 @@ public class Token {
 
 	public int[] randomize(){
 		int zbir = 0;
-		int[] niz = new int[3];
-
+		niz = new int[3];
 		for(int i=0;i<3;i++){
 			Random r = new Random();
 			int b=r.nextInt(9)+1;
@@ -70,6 +87,10 @@ public void drawToken(Graphics2D g){
 		for(TokenCell tc: tcells){
 			tc.drawTokenCell(g);
 		}
+	}
+
+	public int[] getNiz() {
+		return niz;
 	}
 
 	public Shape getShape() {

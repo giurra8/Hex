@@ -16,8 +16,10 @@ public class PlayerPanel extends JPanel {
 
         this.p = p;
         setPreferredSize(new Dimension(300, 800));
+        setBackground(Color.blue);
         setVisible(true);
         addMouseListener(new PlayerPanelListener());
+
     }
 
 
