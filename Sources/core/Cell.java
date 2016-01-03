@@ -39,7 +39,9 @@ public class Cell {
 		g.setPaint(Color.black);
 		g.draw(shape);
 		if(hasToken) {
+
 			getTok().drawToken(g);
+			
 		}
 //		if(getTok()!=null && !hasToken){
 //			getTok().makeToken();
