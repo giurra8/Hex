@@ -2,6 +2,9 @@ package Sources.core;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -12,7 +15,7 @@ public class Frame extends JFrame {
 	private Player2 play2=new Player2();
 	private PlayerPanel pan1 = new PlayerPanel(play1);
 	private PlayerPanel pan2 = new PlayerPanel(play2);
-
+	private Map<Cell,ArrayList<Cell>> neighborCells = new HashMap<>();
 	private static Frame instance;
 	private Player currentPlaya=play1;
 	private BufferedImage icon = null;
@@ -62,7 +65,7 @@ public class Frame extends JFrame {
 		add(board, BorderLayout.CENTER);
 		add(pan1, BorderLayout.WEST);
 		add(pan2, BorderLayout.EAST);
-
+		fillNeighbors();
 
 		setVisible(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -88,5 +91,45 @@ public class Frame extends JFrame {
 	{
 		if(currentPlaya==play1) currentPlaya=play2;
 		else currentPlaya=play1;
+	}
+
+	public void fillNeighbors()
+	{
+		ArrayList<Cell> cells = board.getCells();
+		ArrayList<Cell> celovi;
+		for(Cell c:cells)
+		{
+			celovi = new ArrayList<>();
+			if(c.getIdx()%2==0)
+			{
+				celovi.add(getCellById(c.getIdx(),c.getIdy()-1));
+				celovi.add(getCellById(c.getIdx(),c.getIdy()+1));
+				celovi.add(getCellById(c.getIdx()-1,c.getIdy()));
+				celovi.add(getCellById(c.getIdx()-1,c.getIdy()+1));
+				celovi.add(getCellById(c.getIdx()+1,c.getIdy()));
+				celovi.add(getCellById(c.getIdx()+1,c.getIdy()+1));
+			}
+			else
+			{
+				celovi.add(getCellById(c.getIdx(),c.getIdy()-1));
+				celovi.add(getCellById(c.getIdx(),c.getIdy()+1));
+				celovi.add(getCellById(c.getIdx()-1,c.getIdy()));
+				celovi.add(getCellById(c.getIdx()-1,c.getIdy()-1));
+				celovi.add(getCellById(c.getIdx()+1,c.getIdy()));
+				celovi.add(getCellById(c.getIdx()+1,c.getIdy()-1));
+			}
+			neighborCells.put(c,celovi);
+		}
+	}
+
+	public Cell getCellById(int idx,int idy)
+	{
+		ArrayList<Cell> cells = board.getCells();
+		for(Cell c: cells)
+		{
+			if(c.getIdx()==idx && c.getIdy()==idy)
+				return c;
+		}
+		return null;
 	}
 }

@@ -14,12 +14,13 @@ public class Cell {
 	private final double  LINE = 50;
 	private Token tok = null;
 	private boolean hasToken = false;
-	private int id;
-	public Cell(double x, double y, int id){
+	private int idx,idy;
+	public Cell(double x, double y, int idx,int idy){
 		this.x=x;
 		this.y=y;
-		this.id=id;
-		
+		this.idx=idx;
+		this.idy=idy;
+
 	}
 
 	public void makeCell(){
@@ -103,6 +104,19 @@ public class Cell {
 		this.y = y;
 	}
 
-	
-	
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
+	public int getIdy() {
+		return idy;
+	}
+
+	public void setIdy(int idy) {
+		this.idy = idy;
+	}
 }
