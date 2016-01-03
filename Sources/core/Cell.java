@@ -19,6 +19,7 @@ public class Cell {
 		this.x=x;
 		this.y=y;
 		this.id=id;
+		
 	}
 
 	public void makeCell(){

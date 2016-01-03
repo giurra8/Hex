@@ -18,7 +18,6 @@ public class Token {
 	private Player owner;
 	private boolean selected;
 	private int[] niz;
-	//= new int[3];
 
 	public Token(double x, double y){
 		this.x=x;
