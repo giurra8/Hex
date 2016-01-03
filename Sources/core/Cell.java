@@ -8,12 +8,12 @@ import java.awt.geom.GeneralPath;
 
 public class Cell {
 	
-	Shape shape=new GeneralPath();
-	double x;
-	double y;
-	final double  LINE=50;
-	Token tok=null;
-	boolean hasToken=false;
+	private Shape shape=new GeneralPath();
+	private double x;
+	private double y;
+	private final double  LINE = 50;
+	private Token tok = null;
+	private boolean hasToken = false;
 	
 	public Cell(double x, double y){
 		this.x=x;
@@ -38,13 +38,16 @@ public class Cell {
 		g.setStroke(new BasicStroke(2f));
 		g.setPaint(Color.black);
 		g.draw(shape);
-		if(hasToken)
+		if(hasToken) {
+
 			getTok().drawToken(g);
-		if(getTok()!=null && !hasToken){
-			getTok().makeToken();
-			getTok().drawToken(g);
-			setHasToken(true);
-			}
+			
+		}
+//		if(getTok()!=null && !hasToken){
+//			getTok().makeToken();
+//			getTok().drawToken(g);
+//			setHasToken(true);
+//			}
 		
 	}
 	
@@ -64,6 +67,8 @@ public class Cell {
 	}
 
 	public void setTok(Token tok) {
+		if (tok!=null)
+			setHasToken(true);
 		this.tok = tok;
 	}
 

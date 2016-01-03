@@ -1,5 +1,7 @@
 package Sources.core;
 
+import Sources.listeners.BoardListener;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -27,7 +29,7 @@ public class Board extends JPanel{
 	Cell cell12=new Cell(width-75,250+5*50*Math.sqrt(3)/2);
 	Cell cell13=new Cell(width-150,250+50*Math.sqrt(3));
 	Cell cell14=new Cell(width-150,250+2*50*Math.sqrt(3));
-	Token tok=new Token(width,150);
+	//Token tok=new Token(width,150);
 	
 	
 	
@@ -46,50 +48,14 @@ public class Board extends JPanel{
 		cells.add(cell12);
 		cells.add(cell13);
 		cells.add(cell14);
-		this.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				Point p=e.getPoint();
-				for(Cell c: cells){
-					if(c.getShape().contains(p)){
-						if(c.getTok()==null){						
-							Token tok=new Token(c.getX(), c.getY());
-							c.setTok(tok);
-							Frame.getInstance().getBoard().repaint();
-							
-						}
-					}
-				}
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
+		addMouseListener(new BoardListener());
+
 	}
+
+	public ArrayList<Cell> getCells() {
+		return cells;
+	}
+
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -100,10 +66,7 @@ public class Board extends JPanel{
 			c.makeCell();
 			c.drawCell(g2);
 		}
-		
-		
-		
-		
+
 	}
 	
 	
