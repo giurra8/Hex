@@ -2,13 +2,8 @@ package Sources.core;
 
 import Sources.listeners.BoardListener;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.*;
 import java.util.ArrayList;
-
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
@@ -29,7 +24,6 @@ public class Board extends JPanel{
 	Cell cell12=new Cell(width-75,250+5*50*Math.sqrt(3)/2,2,3);
 	Cell cell13=new Cell(width-150,250+50*Math.sqrt(3),1,2);
 	Cell cell14=new Cell(width-150,250+2*50*Math.sqrt(3),1,3);
-	//Token tok=new Token(width,150);
 	
 	
 	
@@ -49,7 +43,7 @@ public class Board extends JPanel{
 		cells.add(cell13);
 		cells.add(cell14);
 		addMouseListener(new BoardListener());
-
+		setBackground(Color.DARK_GRAY);
 	}
 
 	public ArrayList<Cell> getCells() {
@@ -73,15 +67,3 @@ public class Board extends JPanel{
 	
 	
 }
-
-
-
-/*try {
-File file=new File("img/tabla.png");
-BufferedImage image=ImageIO.read(file);
-g.drawImage(image, 0, 0, getParent());
-
-} catch (IOException e) {
-// TODO Auto-generated catch block
-e.printStackTrace();
-}*/

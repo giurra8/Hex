@@ -26,10 +26,6 @@ public class PlayerPanel extends JPanel {
         return p;
     }
 
-    public void setP(Player p) {
-        this.p = p;
-    }
-
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

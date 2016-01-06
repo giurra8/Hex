@@ -8,7 +8,6 @@ public class Player {
 
 	private ArrayList<Token> tokens=new ArrayList<>();
 	//Token tok1=new Token(50	, 150);
-	private String name;
 	private Color clr;
 	private Token selected;
 
@@ -21,16 +20,9 @@ public class Player {
 			tokens.add(tk);
 
 		}
-		//tokens.add(tok1);
-		//tok1.makeToken();
 
 	}
 
-
-	public void setName(String name){
-
-		this.name = name;
-	}
 
 	public void setClr(Color clr){
 
@@ -49,11 +41,6 @@ public class Player {
 
 	public ArrayList<Token> getTokens() {
 		return tokens;
-	}
-
-	public void setTokens(ArrayList<Token> tokens) {
-
-		this.tokens = tokens;
 	}
 
 	public Color getClr() {

@@ -1,5 +1,7 @@
 package Sources.core;
 
+import Sources.listeners.DifficultyListener;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -10,16 +12,25 @@ import javax.swing.*;
 
 public class Frame extends JFrame {
 	
-	private Board board=new Board();
-	private Player play1=new Player();
-	private Player play2=new Player();
+	private Board board = new Board();
+	private Player play1 = new Player();
+	private Player play2 = new Player();
+	private AI bot = new AI();
 	private PlayerPanel pan1;
 	private PlayerPanel pan2;
+	private PlayerPanel botpan;
 	private Map<Cell,ArrayList<Cell>> neighborCells = new HashMap<>();
 	private static Frame instance;
-	private Player currentPlaya=play1;
+	private Player currentPlaya = play1;
 	private BufferedImage icon = null;
-	
+	private JMenuBar mb = new JMenuBar();
+	private JMenu menu = new JMenu("Options");
+	private JMenu i = new JMenu("Difficulty");
+	private JMenuItem e = new JMenuItem("Easy");
+	private JMenuItem m = new JMenuItem("Medium");
+	private JMenuItem h = new JMenuItem("Hard");
+	private ScoreOverlay over = new ScoreOverlay();
+
 	public synchronized static Frame getInstance() {
 
 		if (instance == null) {
@@ -55,12 +66,18 @@ public class Frame extends JFrame {
 		setTitle("Hex");
 		setIconImage(icon);
 		setSize(1300,800);
-		//setLocation(450, 100);
 
 		setLocationRelativeTo(null);
 
-		play1.setClr(Color.DARK_GRAY);
-		play2.setClr(Color.PINK);
+		mb.add(menu);
+		menu.add(i);
+		i.add(e);
+		i.add(m);
+		i.add(h);
+		setJMenuBar(mb);
+
+		play1.setClr(Color.GRAY);
+		play2.setClr(Color.BLACK);
 		pan1 = new PlayerPanel(play1);
 		pan2 = new PlayerPanel(play2);
 		pan1.setBackground(play1.getClr());
@@ -68,6 +85,10 @@ public class Frame extends JFrame {
 		add(pan1, BorderLayout.WEST);
 		add(pan2, BorderLayout.EAST);
 		fillNeighbors();
+
+		e.addMouseListener(new DifficultyListener(Difficulty.EASY));
+		m.addMouseListener(new DifficultyListener(Difficulty.MEDIUM));
+		h.addMouseListener(new DifficultyListener(Difficulty.HARD));
 
 
 		setVisible(true);
