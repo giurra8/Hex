@@ -65,18 +65,21 @@ public class Token {
 	}
 
 
-	public int[] randomize(){
+	public int[] randomize() {
 		int zbir = 0;
 		niz = new int[3];
-		for(int i=0;i<3;i++){
+		for (int i = 0; i < 3; i++) {
 			Random r = new Random();
-			int b=r.nextInt(10)+1;
+			int b = r.nextInt(10) + 1;
 			niz[i] = b;
-			zbir+=b;
+			zbir += b;
 		}
 
-		if (zbir>=10 && zbir<30)
-			return niz;
+		if (niz[0] != niz[1] || niz[0] != niz[2]) {
+			if (zbir >= 10 && zbir < 30)
+				return niz;
+			else return null;
+		}
 		else return null;
 	}
 
@@ -124,27 +127,27 @@ public void drawToken(Graphics2D g){
 
 	public double getX() {
 	return x;
-}
+	}
 
-public void setX(double x) {
+	public void setX(double x) {
 	this.x = x;
-}
+	}
 
-public double getY() {
+	public double getY() {
 	return y;
-}
+	}
 
-public void setY(double y) {
+	public void setY(double y) {
 	this.y = y;
-}
+	}
 
-public ArrayList<TokenField> getTcells() {
+	public ArrayList<TokenField> getTcells() {
 	return tcells;
-}
+	}
 
-public void setTcells(ArrayList<TokenField> tcells) {
+	public void setTcells(ArrayList<TokenField> tcells) {
 	this.tcells = tcells;
-}
+	}
 
 
 

@@ -46,11 +46,7 @@ public class Cell {
 			getTok().drawToken(g);
 			
 		}
-//		if(getTok()!=null && !hasToken){
-//			getTok().makeToken();
-//			getTok().drawToken(g);
-//			setHasToken(true);
-//			}
+
 		
 	}
 	
