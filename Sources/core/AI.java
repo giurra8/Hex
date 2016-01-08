@@ -31,8 +31,8 @@ public class AI extends Player{
         switch (dif) {
             case EASY:
                 int index = r.nextInt(cells.size());
+                while(cells.get(index).hasToken()) index = r.nextInt(cells.size());
                 randomCell = cells.get(index);
-                while(randomCell.hasToken()) index = r.nextInt(cells.size());
                 index = r.nextInt(tokens.size());
                 randomToken = tokens.get(index);
                 break;
