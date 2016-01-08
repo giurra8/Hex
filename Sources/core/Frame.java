@@ -15,7 +15,8 @@ public class Frame extends JFrame {
 	private Board board = new Board();
 	private Player play1 = new Player();
 	private Player play2 = new Player();
-	private AI bot = new AI();
+	private AI bot;
+	private Difficulty dif;
 	private PlayerPanel pan1;
 	private PlayerPanel pan2;
 	private PlayerPanel botpan;
@@ -41,8 +42,20 @@ public class Frame extends JFrame {
 		return instance;
 	}
 
-	
-	
+
+	public AI getBot() {
+		return bot;
+	}
+
+	public void setBot(AI bot) {
+		this.bot = bot;
+		play2 = bot;
+	}
+
+	public void setPlay2(Player play2) {
+		this.play2 = play2;
+	}
+
 	public Player getCurrentPlaya() {
 		return currentPlaya;
 	}
@@ -76,10 +89,13 @@ public class Frame extends JFrame {
 		i.add(h);
 		setJMenuBar(mb);
 
+		bot = new AI(Difficulty.EASY);
+		bot.setClr(Color.BLACK);
+
 		play1.setClr(Color.GRAY);
-		play2.setClr(Color.BLACK);
+		//play2.setClr(Color.BLACK);
 		pan1 = new PlayerPanel(play1);
-		pan2 = new PlayerPanel(play2);
+		pan2 = new PlayerPanel(bot);
 		pan1.setBackground(play1.getClr());
 		add(board, BorderLayout.CENTER);
 		add(pan1, BorderLayout.WEST);
@@ -160,7 +176,15 @@ public class Frame extends JFrame {
 		}
 	}
 
-	public Cell getCellById(int idx,int idy)
+	public Difficulty getDif() {
+		return dif;
+	}
+
+	public void setDif(Difficulty dif) {
+		this.dif = dif;
+	}
+
+	public Cell getCellById(int idx, int idy)
 	{
 		ArrayList<Cell> cells = board.getCells();
 		for(Cell c: cells)
@@ -175,4 +199,6 @@ public class Frame extends JFrame {
 	public Map<Cell, ArrayList<Cell>> getNeighborCells() {
 		return neighborCells;
 	}
+
+
 }
