@@ -122,6 +122,14 @@ public class AI extends Player{
                 break;
         }}
         CellToken ct = new CellToken(randomCell,randomToken);
+
+        try {
+            Thread.sleep(1000);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
         return ct;
     }
 

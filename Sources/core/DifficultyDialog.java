@@ -16,12 +16,13 @@ public class DifficultyDialog extends JDialog {
     public DifficultyDialog()
     {
         setTitle("Difficulty selection");
-        setSize(600, 600);
+        setSize(600, 100);
         setLocationRelativeTo(Frame.getInstance());
+        setResizable(false);
         setVisible(true);
         setAlwaysOnTop(true);
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel,BoxLayout.PAGE_AXIS));
+        panel.setLayout(new GridLayout(1, 3));
         JButton easyb = new JButton("Easy");
         JButton mediumb = new JButton("Medium");
         JButton hardb = new JButton("Hard");
@@ -49,6 +50,10 @@ public class DifficultyDialog extends JDialog {
                 dispose();
             }
         });
+        easyb.setPreferredSize(new Dimension(50, 50));
+        mediumb.setPreferredSize(new Dimension(50, 50));
+        hardb.setPreferredSize(new Dimension(50, 50));
+
 
         panel.add(easyb); panel.add(mediumb); panel.add(hardb);
 

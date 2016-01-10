@@ -71,7 +71,7 @@ public class Frame extends JFrame {
 	public Frame(){
 
 		try{
-			icon = ImageIO.read(getClass().getResource("/hexagon-icon.png"));
+			icon = ImageIO.read(getClass().getResource("/Resources/hexagon-icon.png"));
 		} catch(Exception e){
 			e.printStackTrace();
 		}
