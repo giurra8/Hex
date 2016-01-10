@@ -55,6 +55,7 @@ public class BoardListener implements MouseListener {
                 }
             }
             p.setSelected(null);
+
             //Frame.getInstance().switchPlaya();
             CellToken ct = frejm.getBot().doAction();
 
