@@ -4,6 +4,7 @@ import Sources.core.aiStuff.CellToken;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -57,14 +58,19 @@ public class AI extends Player{
                                 Map numberToOwn=t.getNumberToOwn();
                                 proveraZaToken(nc,t);
                                 for(Integer i:t.getBrojpromena()){
-                                    if(max<i){
+                                    if(max<=i){
                                         max=i;
                                         randomToken=t;
                                         randomCell=(Cell)numberToOwn.get(max);
 
                                      }
+
                                 }
+                                t.setBrojpromena(new ArrayList<Integer>());
+                                Map<Integer, Cell> map=new HashMap<>();
+                                t.setNumberToOwn(map);
                              }
+                            max=0;
                         }
                     }
                 }
