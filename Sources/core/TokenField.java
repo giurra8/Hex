@@ -77,6 +77,10 @@ public class TokenField {
 		}
 	}
 
+	public int getValue() {
+		return value;
+	}
+
 	public int getId() {
 		return i;
 	}

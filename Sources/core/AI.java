@@ -28,24 +28,66 @@ public class AI extends Player{
     public CellToken doAction() {
         Cell randomCell = null;
         Token randomToken = null;
+        CellToken randomCellToken=null;
         ArrayList<Cell> cells = Frame.getInstance().getBoard().getCells();
         Random r = new Random();
         switch (dif) {
-            case EASY:
+            case EASY:{
                 int index = r.nextInt(cells.size());
                 while(cells.get(index).hasToken()) index = r.nextInt(cells.size());
                 randomCell = cells.get(index);
                 index = r.nextInt(tokens.size());
                 randomToken = tokens.get(index);
-                break;
+                break;}
 
-            case MEDIUM:
+            case HARD:{
+                int max=0;
+                ArrayList<CellToken> cellToken=new ArrayList<>();
+                ArrayList<Cell> enemyCells = enemyCells();
+                Map<Cell, ArrayList<Cell>> neighborCells = Frame.getInstance().getNeighborCells();
+                for(Cell c:enemyCells) {
+                    for(Cell nc : neighborCells.get(c)){
+                        if(nc!=null)
+                            if(!nc.hasToken()){
+                                for(Token t:tokens){
+                                    Map numberToOwn=t.getNumberToOwn();
+                                    proveraZaToken(nc,t);
+                                    for(Integer i:t.getBrojpromena()){
+                                        if(max<=i){
+                                            max=i;
+                                            cellToken.add(new CellToken(nc, t, max));
+                                        }
+
+                                    }
+                                    t.setBrojpromena(new ArrayList<Integer>());
+                                    Map<Integer, Cell> map=new HashMap<>();
+                                    t.setNumberToOwn(map);
+                                }
+
+                            }
+                    }
+                    max=0;
+                }
+
+                for(CellToken ct:cellToken){
+                    if(max<=ct.brojOkrenutih)
+                        max=ct.brojOkrenutih;
+                }
+                int zbir=29;
+                for(CellToken ct:cellToken){
+                    if(ct.brojOkrenutih==max)
+                        if(ct.token.getZbir()<zbir){
+                            zbir=ct.token.getZbir();
+                            randomCellToken=ct;
+                }}
+
+                randomCell=randomCellToken.cell;
+                randomToken=randomCellToken.token;
 
 
 
-
-                break;
-            case HARD:
+                break;}
+            case MEDIUM:{
                 int max=0;
 
                 ArrayList<Cell> enemyCells = enemyCells();
@@ -70,14 +112,15 @@ public class AI extends Player{
                                 Map<Integer, Cell> map=new HashMap<>();
                                 t.setNumberToOwn(map);
                              }
-                            max=0;
+                            System.out.println(""+max);
                         }
                     }
+                    max=0;
                 }
 
 
                 break;
-        }
+        }}
         CellToken ct = new CellToken(randomCell,randomToken);
         return ct;
     }
