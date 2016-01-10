@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Token {
@@ -19,6 +21,9 @@ public class Token {
 	private boolean selected;
 	private int[] niz;
 	private Cell ownerCell;
+	private ArrayList<Cell> possibleCells=new ArrayList<>();
+	private ArrayList<Integer>  brojpromena=new ArrayList<>();
+	private Map<Integer, Cell>  numberToOwn=new HashMap<>();
 
 	public Token(double x, double y){
 		this.x=x;
@@ -93,6 +98,14 @@ public void drawToken(Graphics2D g){
 		}
 	}
 
+	public ArrayList<Integer> getBrojpromena() {
+		return brojpromena;
+	}
+
+	public void setBrojpromena(ArrayList<Integer> brojpromena) {
+		this.brojpromena = brojpromena;
+	}
+
 	public Cell getOwnerCell() {
 		return ownerCell;
 	}
@@ -149,6 +162,17 @@ public void drawToken(Graphics2D g){
 	this.tcells = tcells;
 	}
 
+	public Map<Integer, Cell> getNumberToOwn() {
+		return numberToOwn;
+	}
 
 
+
+	public ArrayList<Cell> getPossibleCells() {
+		return possibleCells;
+	}
+
+	public void setPossibleCells(ArrayList<Cell> possibleCells) {
+		this.possibleCells = possibleCells;
+	}
 }
