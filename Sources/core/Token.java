@@ -18,7 +18,6 @@ public class Token {
 	private final double LINE = 50;
 	private ArrayList<TokenField> tcells=new ArrayList<>();
 	private Player owner;
-	private boolean selected;
 	private int[] niz;
 	private Cell ownerCell;
 	private ArrayList<Cell> possibleCells=new ArrayList<>();
@@ -45,12 +44,7 @@ public class Token {
 		while(niz==null)
 			niz = randomize();
 
-		for(int i=1;i<4;i++){
-			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1], this);
-			tc.makeTokenField();
-			zbir+=tc.getValue();
-			tcells.add(tc);
-		}
+		newToken();
 
 	}
 	public void remakeToken(){
@@ -64,6 +58,13 @@ public class Token {
 		((GeneralPath)shape).closePath();
 		tcells.clear();
 		zbir=0;
+
+		newToken();
+
+	}
+
+	public void newToken(){
+
 		for(int i=1;i<4;i++){
 			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1],this);
 			tc.makeTokenField();
@@ -72,7 +73,6 @@ public class Token {
 		}
 
 	}
-
 
 	public int[] randomize() {
 		int zbir = 0;
@@ -102,6 +102,10 @@ public void drawToken(Graphics2D g){
 		}
 	}
 
+	public void setOwnerCell(Cell ownerCell) {
+		this.ownerCell = ownerCell;
+	}
+
 	public ArrayList<Integer> getBrojpromena() {
 		return brojpromena;
 	}
@@ -114,28 +118,12 @@ public void drawToken(Graphics2D g){
 		this.numberToOwn = numberToOwn;
 	}
 
-	public Cell getOwnerCell() {
-		return ownerCell;
-	}
-
-	public void setOwnerCell(Cell ownerCell) {
-		this.ownerCell = ownerCell;
-	}
-
 	public int[] getNiz() {
 		return niz;
 	}
 
 	public Shape getShape() {
 		return shape;
-	}
-
-	public boolean isSelected() {
-		return selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
 	}
 
 	public Player getOwner() {
@@ -146,16 +134,8 @@ public void drawToken(Graphics2D g){
 		this.owner = owner;
 	}
 
-	public double getX() {
-	return x;
-	}
-
 	public void setX(double x) {
 	this.x = x;
-	}
-
-	public double getY() {
-	return y;
 	}
 
 	public void setY(double y) {
@@ -164,10 +144,6 @@ public void drawToken(Graphics2D g){
 
 	public ArrayList<TokenField> getTcells() {
 	return tcells;
-	}
-
-	public void setTcells(ArrayList<TokenField> tcells) {
-	this.tcells = tcells;
 	}
 
 	public Map<Integer, Cell> getNumberToOwn() {
@@ -182,7 +158,4 @@ public void drawToken(Graphics2D g){
 		return possibleCells;
 	}
 
-	public void setPossibleCells(ArrayList<Cell> possibleCells) {
-		this.possibleCells = possibleCells;
-	}
 }
