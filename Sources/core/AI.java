@@ -62,7 +62,7 @@ public class AI extends Player{
                                         randomToken=t;
                                         randomCell=(Cell)numberToOwn.get(max);
 
-                                    }
+                                     }
                                 }
                              }
                         }
