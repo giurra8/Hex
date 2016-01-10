@@ -18,7 +18,6 @@ public class DifficultyDialog extends JDialog {
         setTitle("Difficulty selection");
         setSize(600, 100);
         setLocationRelativeTo(Frame.getInstance());
-        setResizable(false);
         setVisible(true);
         setAlwaysOnTop(true);
         JPanel panel = new JPanel();

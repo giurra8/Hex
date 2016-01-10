@@ -1,7 +1,5 @@
 package Sources.core;
 
-import Sources.listeners.DifficultyListener;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -19,18 +17,10 @@ public class Frame extends JFrame {
 	private Difficulty dif;
 	private PlayerPanel pan1;
 	private PlayerPanel pan2;
-	private PlayerPanel botpan;
 	private Map<Cell,ArrayList<Cell>> neighborCells = new HashMap<>();
 	private static Frame instance;
 	private Player currentPlaya = play1;
 	private BufferedImage icon = null;
-	private JMenuBar mb = new JMenuBar();
-	private JMenu menu = new JMenu("Options");
-	private JMenu i = new JMenu("Difficulty");
-	private JMenuItem e = new JMenuItem("Easy");
-	private JMenuItem m = new JMenuItem("Medium");
-	private JMenuItem h = new JMenuItem("Hard");
-	private ScoreOverlay over = new ScoreOverlay();
 
 	public synchronized static Frame getInstance() {
 
@@ -47,19 +37,10 @@ public class Frame extends JFrame {
 		return bot;
 	}
 
-	public void setBot(AI bot) {
-		this.bot = bot;
-		play2 = bot;
-	}
-
-	public void setPlay2(Player play2) {
-		this.play2 = play2;
-	}
 
 	public Player getCurrentPlaya() {
 		return currentPlaya;
 	}
-
 
 
 	public void setCurrentPlaya(Player currentPlaya) {
@@ -82,18 +63,10 @@ public class Frame extends JFrame {
 
 		setLocationRelativeTo(null);
 
-		mb.add(menu);
-		menu.add(i);
-		i.add(e);
-		i.add(m);
-		i.add(h);
-		setJMenuBar(mb);
-
 		bot = new AI(Difficulty.EASY);
 		bot.setClr(Color.BLACK);
 
 		play1.setClr(Color.GRAY);
-		//play2.setClr(Color.BLACK);
 		pan1 = new PlayerPanel(play1);
 		pan2 = new PlayerPanel(bot);
 		pan1.setBackground(play1.getClr());
@@ -101,11 +74,6 @@ public class Frame extends JFrame {
 		add(pan1, BorderLayout.WEST);
 		add(pan2, BorderLayout.EAST);
 		fillNeighbors();
-
-		e.addMouseListener(new DifficultyListener(Difficulty.EASY));
-		m.addMouseListener(new DifficultyListener(Difficulty.MEDIUM));
-		h.addMouseListener(new DifficultyListener(Difficulty.HARD));
-
 
 		setVisible(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -176,13 +144,6 @@ public class Frame extends JFrame {
 		}
 	}
 
-	public Difficulty getDif() {
-		return dif;
-	}
-
-	public void setDif(Difficulty dif) {
-		this.dif = dif;
-	}
 
 	public Cell getCellById(int idx, int idy)
 	{

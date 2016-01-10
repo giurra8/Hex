@@ -2,6 +2,7 @@ package Sources.core;
 
 import Sources.core.aiStuff.CellToken;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ public class AI extends Player{
 
     private ArrayList<Token> tokens = new ArrayList<>();
     private Color clr;
-    Difficulty dif;
+    private Difficulty dif;
     private Token selected;
 
     public AI(Difficulty dif) {
@@ -50,7 +51,6 @@ public class AI extends Player{
                         if(nc!=null)
                             if(!nc.hasToken()){
                                 for(Token t:tokens){
-                                    Map numberToOwn=t.getNumberToOwn();
                                     proveraZaToken(nc,t);
                                     for(Integer i:t.getBrojpromena()){
                                         if(max<=i){
@@ -108,7 +108,7 @@ public class AI extends Player{
                                      }
 
                                 }
-                                t.setBrojpromena(new ArrayList<Integer>());
+                                t.setBrojpromena(new ArrayList<>());
                                 Map<Integer, Cell> map=new HashMap<>();
                                 t.setNumberToOwn(map);
                              }
@@ -120,17 +120,9 @@ public class AI extends Player{
 
 
                 break;
-        }}
-        CellToken ct = new CellToken(randomCell,randomToken);
-
-        try {
-            Thread.sleep(1000);
+            }
         }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return ct;
+        return new CellToken(randomCell,randomToken);
     }
 
     public void proveraZaToken(Cell c,Token t)
@@ -141,6 +133,7 @@ public class AI extends Player{
         possibleCellsforToken.add(c);
         Frame frejm = Frame.getInstance();
         int val=0;
+
         for(TokenField field:t.getTcells()) {
             if (field.getId() == 1) {
                 if (c.getIdx() % 2 == 0) {
@@ -275,7 +268,6 @@ public class AI extends Player{
         Integer number=val;
         t.getBrojpromena().add(val);
         numberToOwn.put(number, c);
-        //return val;
 
     }
 
@@ -289,9 +281,6 @@ public class AI extends Player{
         }
         return enemyCells;
     }
-    public Difficulty getDif() {
-        return dif;
-    }
 
     public void setDif(Difficulty dif) {
         this.dif = dif;
@@ -300,10 +289,6 @@ public class AI extends Player{
     @Override
     public ArrayList<Token> getTokens() {
         return tokens;
-    }
-
-    public void setTokens(ArrayList<Token> tokens) {
-        this.tokens = tokens;
     }
 
     @Override

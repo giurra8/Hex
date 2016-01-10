@@ -75,44 +75,20 @@ public class Cell {
 		return shape;
 	}
 
-	public void setShape(Shape shape) {
-		this.shape = shape;
-	}
-	
-	public double getLine() {
-		return LINE;
-	}
-
-
 	public double getX() {
 		return x;
-	}
-
-	public void setX(double x) {
-		this.x = x;
 	}
 
 	public double getY() {
 		return y;
 	}
 
-	public void setY(double y) {
-		this.y = y;
-	}
-
 	public int getIdx() {
 		return idx;
-	}
-
-	public void setIdx(int idx) {
-		this.idx = idx;
 	}
 
 	public int getIdy() {
 		return idy;
 	}
 
-	public void setIdy(int idy) {
-		this.idy = idy;
-	}
 }

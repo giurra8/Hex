@@ -25,10 +25,10 @@ public class BoardListener implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
 
-        Player p = Frame.getInstance().getCurrentPlaya();
         Frame frejm = Frame.getInstance();
-        int i1=0,i2=0,i0=0;
+        Player p = frejm.getCurrentPlaya();
         Token t = p.getSelected();
+
         if(t==null) JOptionPane.showMessageDialog(frejm, "Nije selektovan dobar token");
         else if(t.getOwner()!=frejm.getCurrentPlaya()) {
             JOptionPane.showMessageDialog(frejm, "Pogresan igrac");
@@ -56,7 +56,6 @@ public class BoardListener implements MouseListener {
             }
             p.setSelected(null);
 
-            //Frame.getInstance().switchPlaya();
             CellToken ct = frejm.getBot().doAction();
 
             for (TokenField field : t.getTcells()) {
@@ -85,6 +84,7 @@ public class BoardListener implements MouseListener {
     {
         int i0=0,i1=0,i2=0;
         Frame frejm = Frame.getInstance();
+
         if (field.getId() == 1) {
             if (c.getIdx() % 2 == 0) {
                 i0 = t.getNiz()[0];

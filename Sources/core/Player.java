@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class Player {
 
 	private ArrayList<Token> tokens=new ArrayList<>();
-	//Token tok1=new Token(50	, 150);
 	private Color clr;
 	private Token selected;
 
