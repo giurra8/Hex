@@ -4,6 +4,7 @@ import Sources.core.aiStuff.CellToken;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -37,11 +38,150 @@ public class AI extends Player{
                 randomToken = tokens.get(index);
                 break;
 
+            case MEDIUM:
+
+
+
+
+                break;
+            case HARD:
+                ArrayList<Cell> enemyCells = enemyCells();
+                Map<Cell, ArrayList<Cell>> neighborCells = Frame.getInstance().getNeighborCells();
+                for(Cell c:enemyCells) {
+                    for(Cell nc : neighborCells.get(c)){
+                        if(!nc.hasToken()){
+
+                        }
+                    }
+                }
+                break;
         }
         CellToken ct = new CellToken(randomCell,randomToken);
         return ct;
     }
 
+    public void proveraZaToken(Cell c,Token t)
+    {
+        int i0=0,i1=0,i2=0;
+        Frame frejm = Frame.getInstance();
+        int val=0;
+        for(TokenField field:t.getTcells()) {
+            if (field.getId() == 1) {
+                if (c.getIdx() % 2 == 0) {
+                    i0 = t.getNiz()[0];
+
+                    if (frejm.getCellById(c.getIdx() - 1, c.getIdy()) != null && frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok() != null) {
+                        i1 = frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok().getNiz()[1];
+                        if (i0 > i1 && i1 != 0) {
+                            frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok().setOwner(t.getOwner());
+                        }
+                    }
+                    if (frejm.getCellById(c.getIdx() - 1, c.getIdy() + 1) != null && frejm.getCellById(c.getIdx() - 1, c.getIdy() + 1).getTok() != null) {
+                        i2 = frejm.getCellById(c.getIdx() - 1, c.getIdy() + 1).getTok().getNiz()[2];
+                        if (i0 > i2 && i2 != 0) {
+                            frejm.getCellById(c.getIdx() - 1, c.getIdy() + 1).getTok().setOwner(t.getOwner());
+                        }
+                    }
+
+
+                } else {
+                    i0 = t.getNiz()[0];
+                    if (frejm.getCellById(c.getIdx() - 1, c.getIdy() - 1) != null && frejm.getCellById(c.getIdx() - 1, c.getIdy() - 1).getTok() != null) {
+                        i1 = frejm.getCellById(c.getIdx() - 1, c.getIdy() - 1).getTok().getNiz()[1];
+                        if (i0 > i1 && i1 != 0) {
+                            frejm.getCellById(c.getIdx() - 1, c.getIdy() - 1).getTok().setOwner(t.getOwner());
+                        }
+                    }
+                    if (frejm.getCellById(c.getIdx() - 1, c.getIdy()) != null && frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok() != null) {
+                        i2 = frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok().getNiz()[2];
+
+                        if (i0 > i2 && i2 != 0) {
+                            frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok().setOwner(t.getOwner());
+                        }
+                    }
+
+                }
+            } else if (field.getId() == 2) {
+                if (c.getIdx() % 2 == 0) {
+                    i1 = t.getNiz()[1];
+                    if (frejm.getCellById(c.getIdx() + 1, c.getIdy() + 1) != null && frejm.getCellById(c.getIdx() + 1, c.getIdy() + 1).getTok() != null) {
+                        i0 = frejm.getCellById(c.getIdx() + 1, c.getIdy() + 1).getTok().getNiz()[0];
+                        if (i1 > i0 && i0 != 0) {
+                            frejm.getCellById(c.getIdx() + 1, c.getIdy() + 1).getTok().setOwner(t.getOwner());
+                        }
+                    }
+                    if (frejm.getCellById(c.getIdx(), c.getIdy() + 1) != null && frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok() != null) {
+                        i2 = frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok().getNiz()[2];
+                        if (i1 > i2 && i2 != 0) {
+                            frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok().setOwner(t.getOwner());
+                        }
+                    }
+
+                } else {
+                    i1 = t.getNiz()[1];
+                    if (frejm.getCellById(c.getIdx() + 1, c.getIdy()) != null && frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok() != null) {
+                        i0 = frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok().getNiz()[0];
+
+                        if (i1 > i0 && i0 != 0) {
+                            frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok().setOwner(t.getOwner());
+                        }
+                    }
+                    if (frejm.getCellById(c.getIdx(), c.getIdy() + 1) != null && frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok() != null) {
+                        i2 = frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok().getNiz()[2];
+                        if (i1 > i2 && i2 != 0) {
+                            frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok().setOwner(t.getOwner());
+                        }
+                    }
+
+                }
+            } else if (field.getId() == 3) {
+                if (c.getIdx() % 2 == 0) {
+
+
+                    i2 = t.getNiz()[2];
+                    if (frejm.getCellById(c.getIdx() + 1, c.getIdy()) != null && frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok() != null) {
+                        i0 = frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok().getNiz()[0];
+                        if (i2 > i0 && i0 != 0) {
+                            frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok().setOwner(t.getOwner());
+                        }
+                    }
+                    if (frejm.getCellById(c.getIdx(), c.getIdy() - 1) != null && frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok() != null) {
+                        i1 = frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok().getNiz()[1];
+                        if (i2 > i1 && i1 != 0) {
+                            frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok().setOwner(t.getOwner());
+                        }
+                    }
+
+
+                } else {
+                    i2 = t.getNiz()[2];
+                    if (frejm.getCellById(c.getIdx() + 1, c.getIdy() - 1) != null && frejm.getCellById(c.getIdx() + 1, c.getIdy() - 1).getTok() != null) {
+                        i0 = frejm.getCellById(c.getIdx() + 1, c.getIdy() - 1).getTok().getNiz()[0];
+                        if (i2 > i0 && i0 != 0) {
+                            frejm.getCellById(c.getIdx() + 1, c.getIdy() - 1).getTok().setOwner(t.getOwner());
+                        }
+                    }
+                    if (frejm.getCellById(c.getIdx(), c.getIdy() - 1) != null && frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok() != null) {
+                        i1 = frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok().getNiz()[1];
+                        if (i2 > i1 && i1 != 0) {
+                            frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok().setOwner(t.getOwner());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private ArrayList<Cell> enemyCells(){
+        ArrayList<Cell> enemyCells = new ArrayList<>();
+        for (Cell c : Frame.getInstance().getBoard().getCells()){
+            if(c.hasToken())
+                if(c.getTok().getOwner()!=this){
+                    enemyCells.add(c);
+                }
+        }
+        return enemyCells;
+    }
     public Difficulty getDif() {
         return dif;
     }
