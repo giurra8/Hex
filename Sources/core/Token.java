@@ -24,6 +24,7 @@ public class Token {
 	private ArrayList<Cell> possibleCells=new ArrayList<>();
 	private ArrayList<Integer>  brojpromena=new ArrayList<>();
 	private Map<Integer, Cell>  numberToOwn=new HashMap<>();
+	private int zbir=0;
 
 	public Token(double x, double y){
 		this.x=x;
@@ -47,6 +48,7 @@ public class Token {
 		for(int i=1;i<4;i++){
 			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1], this);
 			tc.makeTokenField();
+			zbir+=tc.getValue();
 			tcells.add(tc);
 		}
 
@@ -61,9 +63,11 @@ public class Token {
 		((GeneralPath)shape).lineTo(x+LINE, y);
 		((GeneralPath)shape).closePath();
 		tcells.clear();
+		zbir=0;
 		for(int i=1;i<4;i++){
 			TokenField tc = new TokenField(x + LINE / 2, y - (LINE / 2 * Math.sqrt(3)), i, niz[i-1],this);
 			tc.makeTokenField();
+			zbir+=tc.getValue();
 			tcells.add(tc);
 		}
 
@@ -170,7 +174,9 @@ public void drawToken(Graphics2D g){
 		return numberToOwn;
 	}
 
-
+	public int getZbir() {
+		return zbir;
+	}
 
 	public ArrayList<Cell> getPossibleCells() {
 		return possibleCells;

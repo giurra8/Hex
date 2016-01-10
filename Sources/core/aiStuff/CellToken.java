@@ -9,10 +9,20 @@ import Sources.core.Token;
 public class CellToken {
     public Cell cell;
     public Token token;
+    public int brojOkrenutih;
 
     public CellToken(Cell cell,Token token)
     {
         this.cell = cell;
         this.token = token;
     }
+
+    public CellToken(Cell cell,Token token, int zbir)
+    {
+        this.cell = cell;
+        this.token = token;
+        this.brojOkrenutih = zbir;
+    }
+
+
 }
