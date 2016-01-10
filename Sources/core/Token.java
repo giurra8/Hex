@@ -106,6 +106,10 @@ public void drawToken(Graphics2D g){
 		this.brojpromena = brojpromena;
 	}
 
+	public void setNumberToOwn(Map<Integer, Cell> numberToOwn) {
+		this.numberToOwn = numberToOwn;
+	}
+
 	public Cell getOwnerCell() {
 		return ownerCell;
 	}
