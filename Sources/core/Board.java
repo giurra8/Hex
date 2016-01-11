@@ -8,9 +8,11 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel{
 	
-	private ArrayList<Cell> cells=new ArrayList<>();
-	private final float width=300;
-	private int all = 0, playa = 0, ai = 0;
+	private ArrayList<Cell> cells = new ArrayList<>();
+	private ArrayList<Cell> check = new ArrayList<>();
+
+	private final float width = 300;
+	private int all = 0;
 
 	Cell cell1=new Cell(width, 250,3,1);
 	Cell cell2=new Cell(width,250+50*Math.sqrt(3),3,2);
@@ -67,40 +69,19 @@ public class Board extends JPanel{
 	
 	public boolean isFull(){
 
-		for (Cell c: cells)
+		for (Cell c: cells) {
 			if (c.hasToken()) {
-				all++;
-				if (c.getTok().getOwner() == Frame.getInstance().getPlay1())
-					playa++;
-				else ai++;
+				if (!check.contains(c)) {
+					check.add(c);
+					all++;
+					//System.out.println(all);
+				}
 			}
+		}
 		if (all == 14)
 			return true;
 		else return false;
 
 	}
 
-	public int getAll() {
-		return all;
-	}
-
-	public void setAll(int all) {
-		this.all = all;
-	}
-
-	public int getPlaya() {
-		return playa;
-	}
-
-	public void setPlaya(int playa) {
-		this.playa = playa;
-	}
-
-	public int getAi() {
-		return ai;
-	}
-
-	public void setAi(int ai) {
-		this.ai = ai;
-	}
 }

@@ -18,6 +18,7 @@ public class AI extends Player{
     private Color clr;
     private Difficulty dif;
     private Token selected;
+    private boolean full = false;
 
     public AI(Difficulty dif) {
         super();
@@ -112,12 +113,11 @@ public class AI extends Player{
                                 Map<Integer, Cell> map=new HashMap<>();
                                 t.setNumberToOwn(map);
                              }
-                            System.out.println(""+max);
+                            //System.out.println(""+max);
                         }
                     }
                     max=0;
                 }
-
 
                 break;
             }
@@ -141,19 +141,13 @@ public class AI extends Player{
 
                     if (frejm.getCellById(c.getIdx() - 1, c.getIdy()) != null && frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok() != null) {
                         i1 = frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok().getNiz()[1];
-                        if (i0 > i1 && i1 != 0) {
-                            //frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok().setOwner(t.getOwner());
-                          //  possibleCellsforToken.add(frejm.getCellById(c.getIdx() - 1, c.getIdy()));
+                        if (i0 > i1 && i1 != 0)
                             val++;
-                        }
                     }
                     if (frejm.getCellById(c.getIdx() - 1, c.getIdy() + 1) != null && frejm.getCellById(c.getIdx() - 1, c.getIdy() + 1).getTok() != null) {
                         i2 = frejm.getCellById(c.getIdx() - 1, c.getIdy() + 1).getTok().getNiz()[2];
-                        if (i0 > i2 && i2 != 0) {
-                            //frejm.getCellById(c.getIdx() - 1, c.getIdy() + 1).getTok().setOwner(t.getOwner());
-                            //possibleCellsforToken.add(frejm.getCellById(c.getIdx() - 1, c.getIdy() + 1));
+                        if (i0 > i2 && i2 != 0)
                             val++;
-                        }
                     }
 
 
@@ -161,21 +155,14 @@ public class AI extends Player{
                     i0 = t.getNiz()[0];
                     if (frejm.getCellById(c.getIdx() - 1, c.getIdy() - 1) != null && frejm.getCellById(c.getIdx() - 1, c.getIdy() - 1).getTok() != null) {
                         i1 = frejm.getCellById(c.getIdx() - 1, c.getIdy() - 1).getTok().getNiz()[1];
-                        if (i0 > i1 && i1 != 0) {
-                            //frejm.getCellById(c.getIdx() - 1, c.getIdy() - 1).getTok().setOwner(t.getOwner());
-                           // possibleCellsforToken.add(frejm.getCellById(c.getIdx() - 1, c.getIdy() - 1));
+                        if (i0 > i1 && i1 != 0)
                             val++;
-                        }
                     }
                     if (frejm.getCellById(c.getIdx() - 1, c.getIdy()) != null && frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok() != null) {
                         i2 = frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok().getNiz()[2];
 
-                        if (i0 > i2 && i2 != 0) {
-                            //frejm.getCellById(c.getIdx() - 1, c.getIdy()).getTok().setOwner(t.getOwner());
-                            //possibleCellsforToken.add(frejm.getCellById(c.getIdx() - 1, c.getIdy()));
+                        if (i0 > i2 && i2 != 0)
                             val++;
-
-                        }
                     }
 
                 }
@@ -184,20 +171,14 @@ public class AI extends Player{
                     i1 = t.getNiz()[1];
                     if (frejm.getCellById(c.getIdx() + 1, c.getIdy() + 1) != null && frejm.getCellById(c.getIdx() + 1, c.getIdy() + 1).getTok() != null) {
                         i0 = frejm.getCellById(c.getIdx() + 1, c.getIdy() + 1).getTok().getNiz()[0];
-                        if (i1 > i0 && i0 != 0) {
-                            //frejm.getCellById(c.getIdx() + 1, c.getIdy() + 1).getTok().setOwner(t.getOwner());
-                            //possibleCellsforToken.add(frejm.getCellById(c.getIdx() + 1, c.getIdy() + 1));
+                        if (i1 > i0 && i0 != 0)
                             val++;
 
-                        }
                     }
                     if (frejm.getCellById(c.getIdx(), c.getIdy() + 1) != null && frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok() != null) {
                         i2 = frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok().getNiz()[2];
-                        if (i1 > i2 && i2 != 0) {
-                            //frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok().setOwner(t.getOwner());
-                            //possibleCellsforToken.add(frejm.getCellById(c.getIdx(), c.getIdy() + 1));
+                        if (i1 > i2 && i2 != 0)
                             val++;
-                        }
                     }
 
                 } else {
@@ -205,19 +186,14 @@ public class AI extends Player{
                     if (frejm.getCellById(c.getIdx() + 1, c.getIdy()) != null && frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok() != null) {
                         i0 = frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok().getNiz()[0];
 
-                        if (i1 > i0 && i0 != 0) {
-                            //frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok().setOwner(t.getOwner());
-                            //possibleCellsforToken.add(frejm.getCellById(c.getIdx() + 1, c.getIdy()));
+                        if (i1 > i0 && i0 != 0)
                             val++;
-                        }
+
                     }
                     if (frejm.getCellById(c.getIdx(), c.getIdy() + 1) != null && frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok() != null) {
                         i2 = frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok().getNiz()[2];
-                        if (i1 > i2 && i2 != 0) {
-                            //frejm.getCellById(c.getIdx(), c.getIdy() + 1).getTok().setOwner(t.getOwner());
-                            //possibleCellsforToken.add(frejm.getCellById(c.getIdx(), c.getIdy() + 1));
+                        if (i1 > i2 && i2 != 0)
                             val++;
-                        }
                     }
 
                 }
@@ -228,19 +204,13 @@ public class AI extends Player{
                     i2 = t.getNiz()[2];
                     if (frejm.getCellById(c.getIdx() + 1, c.getIdy()) != null && frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok() != null) {
                         i0 = frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok().getNiz()[0];
-                        if (i2 > i0 && i0 != 0) {
-                            //frejm.getCellById(c.getIdx() + 1, c.getIdy()).getTok().setOwner(t.getOwner());
-                           // possibleCellsforToken.add(frejm.getCellById(c.getIdx() + 1, c.getIdy()));
+                        if (i2 > i0 && i0 != 0)
                             val++;
-                        }
                     }
                     if (frejm.getCellById(c.getIdx(), c.getIdy() - 1) != null && frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok() != null) {
                         i1 = frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok().getNiz()[1];
-                        if (i2 > i1 && i1 != 0) {
-                         //   frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok().setOwner(t.getOwner());
-                           // possibleCellsforToken.add( frejm.getCellById(c.getIdx(), c.getIdy() - 1));
+                        if (i2 > i1 && i1 != 0)
                             val++;
-                        }
                     }
 
 
@@ -248,19 +218,13 @@ public class AI extends Player{
                     i2 = t.getNiz()[2];
                     if (frejm.getCellById(c.getIdx() + 1, c.getIdy() - 1) != null && frejm.getCellById(c.getIdx() + 1, c.getIdy() - 1).getTok() != null) {
                         i0 = frejm.getCellById(c.getIdx() + 1, c.getIdy() - 1).getTok().getNiz()[0];
-                        if (i2 > i0 && i0 != 0) {
-                         //   frejm.getCellById(c.getIdx() + 1, c.getIdy() - 1).getTok().setOwner(t.getOwner());
-                         //   possibleCellsforToken.add( frejm.getCellById(c.getIdx() + 1, c.getIdy() - 1));
+                        if (i2 > i0 && i0 != 0)
                             val++;
-                        }
                     }
                     if (frejm.getCellById(c.getIdx(), c.getIdy() - 1) != null && frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok() != null) {
                         i1 = frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok().getNiz()[1];
-                        if (i2 > i1 && i1 != 0) {
-                         //   frejm.getCellById(c.getIdx(), c.getIdy() - 1).getTok().setOwner(t.getOwner());
-                          //  possibleCellsforToken.add( frejm.getCellById(c.getIdx(), c.getIdy() - 1));
+                        if (i2 > i1 && i1 != 0)
                             val++;
-                        }
                     }
                 }
             }

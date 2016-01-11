@@ -14,7 +14,6 @@ public class Frame extends JFrame {
 	private Player play1 = new Player();
 	private Player play2 = new Player();
 	private AI bot;
-	private Difficulty dif;
 	private PlayerPanel pan1;
 	private PlayerPanel pan2;
 	private Map<Cell,ArrayList<Cell>> neighborCells = new HashMap<>();
@@ -31,23 +30,6 @@ public class Frame extends JFrame {
 		}
 		return instance;
 	}
-
-
-	public AI getBot() {
-		return bot;
-	}
-
-
-	public Player getCurrentPlaya() {
-		return currentPlaya;
-	}
-
-
-	public void setCurrentPlaya(Player currentPlaya) {
-		this.currentPlaya = currentPlaya;
-	}
-
-
 
 	public Frame(){
 
@@ -161,5 +143,18 @@ public class Frame extends JFrame {
 		return neighborCells;
 	}
 
+	public AI getBot() {
+		return bot;
+	}
+
+
+	public Player getCurrentPlaya() {
+		return currentPlaya;
+	}
+
+
+	public void setCurrentPlaya(Player currentPlaya) {
+		this.currentPlaya = currentPlaya;
+	}
 
 }
