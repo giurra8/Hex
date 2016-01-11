@@ -49,14 +49,12 @@ public class BoardListener implements MouseListener {
                         t.remakeToken();
                         t.setOwnerCell(c);
                         c.setTok(t);
-
-
                     }
                 }
             }
             p.setSelected(null);
-
             CellToken ct = frejm.getBot().doAction();
+
 
             for (TokenField field : t.getTcells()) {
                 provera(field,ct.cell,ct.token);
@@ -78,8 +76,38 @@ public class BoardListener implements MouseListener {
             Frame.getInstance().repaint();
 
         }
+        if (frejm.getBoard().isFull()){
+            //System.out.println("Ende!");
+            victoryEvaluation();
+        }
+    }
+
+    public void victoryEvaluation(){
+
+        int playa = 0, ai = 0;
+        Frame frejm = Frame.getInstance();
+        ArrayList<Cell> cells = frejm.getBoard().getCells();
+
+        for (Cell c:cells){
+
+            if (c.getTok().getOwner() == frejm.getPlay1())
+                playa++;
+            else ai++;
+        }
+
+        if (playa>ai)
+            JOptionPane.showMessageDialog(frejm, "Player: " + playa + " AI: " + ai, "Victory", JOptionPane.INFORMATION_MESSAGE);
+        else if (playa<ai)
+            JOptionPane.showMessageDialog(frejm, "Player: " + playa + " AI: " + ai, "Defeat", JOptionPane.INFORMATION_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(frejm, "Player: " + playa + " AI: " + ai, "Draw", JOptionPane.INFORMATION_MESSAGE);
+
+        //System.out.println("PLAYA: " + playa);
+        //System.out.println("AI: " + ai);
 
     }
+
+
     public void provera(TokenField field,Cell c,Token t)
     {
         int i0=0,i1=0,i2=0;
